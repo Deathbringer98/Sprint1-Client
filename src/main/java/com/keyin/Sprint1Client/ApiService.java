@@ -52,13 +52,13 @@ public class ApiService {
 
     // Aircraft Methods
     public List<Aircraft> getAllAircraft() throws Exception {
-        String response = apiClient.getRequest("/aircrafts");
+        String response = apiClient.getRequest("/aircraft");
         return objectMapper.readValue(response, objectMapper.getTypeFactory().constructCollectionType(List.class, Aircraft.class));
     }
 
     public Aircraft createAircraft(Aircraft aircraft) throws Exception {
         String json = objectMapper.writeValueAsString(aircraft);
-        String response = apiClient.postRequest("/aircrafts", json);
+        String response = apiClient.postRequest("/aircraft", json);
         return objectMapper.readValue(response, Aircraft.class);
     }
 }

@@ -2,6 +2,7 @@ package com.keyin.Sprint1Client;
 
 import com.keyin.Sprint1Client.model.*;
 
+
 import java.util.Scanner;
 
 public class ClientApp {

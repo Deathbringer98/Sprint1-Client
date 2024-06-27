@@ -1,5 +1,6 @@
 package com.keyin.Sprint1Client.model;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

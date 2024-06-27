@@ -2,6 +2,7 @@ package com.keyin.Sprint1Client;
 
 import com.keyin.Sprint1Client.model.*;
 
+
 import java.util.Scanner;
 
 public class ClientApp {
@@ -80,15 +81,15 @@ public class ClientApp {
     private void createCity() throws Exception {
         System.out.println("Enter city name:");
         String name = scanner.nextLine();
-        System.out.println("Enter city state:");
-        String state = scanner.nextLine();
+        System.out.println("Enter city province:");
+        String province = scanner.nextLine();
         System.out.println("Enter city population:");
         int population = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
         City city = new City();
         city.setName(name);
-        city.setState(state);
+        city.setProvince(province); // Make sure `setState` is correct based on your City model
         city.setPopulation(population);
 
         City createdCity = apiService.createCity(city);

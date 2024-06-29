@@ -1,6 +1,5 @@
 package com.keyin.Sprint1Client;
 
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -8,8 +7,7 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
 public class ApiClient {
-    private static final String BASE_URL = "http://localhost:8080"; // Update with actual server URL
-
+    private static final String BASE_URL = "http://localhost:8080";
     private HttpClient client;
 
     public ApiClient() {
@@ -21,7 +19,6 @@ public class ApiClient {
                 .uri(new URI(BASE_URL + endpoint))
                 .GET()
                 .build();
-
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();
     }
@@ -32,8 +29,25 @@ public class ApiClient {
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(json, StandardCharsets.UTF_8))
                 .build();
-
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();
+    }
+
+    public String putRequest(String endpoint, String json) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI(BASE_URL + endpoint))
+                .header("Content-Type", "application/json")
+                .PUT(HttpRequest.BodyPublishers.ofString(json, StandardCharsets.UTF_8))
+                .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+    public void deleteRequest(String endpoint) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI(BASE_URL + endpoint))
+                .DELETE()
+                .build();
+        client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 }
